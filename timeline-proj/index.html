@@ -26,7 +26,8 @@
         <a-asset-item id="timeline" src="../assets/timelineframe.bake.ply"></a-asset-item>
         <a-asset-item id="judge" src="../assets/voxeljudge.bake.ply"></a-asset-item>
         <a-asset-item id="woman2" src="../assets/voxelwoman2.bake.ply"></a-asset-item>
-        <a-asset-item id="room2" src="../assets/roomwithtableandchair.bake.ply"></a-asset-item>
+        <a-asset-item id="seneca" src="../assets/senecafalls.bake.ply"></a-asset-item>
+
         <a-asset-item id="_1852" src="../assets/1852.bake.ply"></a-asset-item>
         <a-asset-item id="_1920" src="../assets/1920.bake.ply"></a-asset-item>
         <a-asset-item id="_1922" src="../assets/1922.bake.ply"></a-asset-item>
@@ -35,9 +36,6 @@
         <a-asset-item id="_1973" src="../assets/1973.bake.ply"></a-asset-item>
         <a-asset-item id="_1991" src="../assets/1991.bake.ply"></a-asset-item>
         <a-asset-item id="_2017" src="../assets/2017.bake.ply"></a-asset-item>
-
-
-
 
       </a-assets>
 
@@ -50,21 +48,24 @@
       <a-entity id="supremecourtscene" visible="true">
         <a-animation begin="makeSceneVisible"  dur="0" to="false" repeat="indefinite"></a-animation>
 
+
         <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
         <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
         <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 5"></a-entity>
-        <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0">
-
-          
-       </a-entity>
+        <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0"></a-entity>
       </a-entity>
 
 
-      <!-- ROOM WITH TABLE AND CHAIR -->
-      <a-entity id="room2" visible='true'>
-        <a-animation begin='click' visible="false" dur="0" to="false" repeat="indefinite"></a-animation>
+      <!-- SENECA FALLS -->
+      <a-entity id="seneca" visible="false">
 
-        <a-entity ply-model="src: #room2" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+        <a-animation begin="makeSceneVisible"  dur="0" to="false" repeat="indefinite"></a-animation>
+
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
+
+        <a-entity ply-model="src: #seneca" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
 
       </a-entity>
 
@@ -87,27 +88,39 @@
       
       <!-- EVERYTHING ELSE -->
 
-      <a-entity camera="userHeight: 1.3" look-controls position="3 6 14">
-
-        <a-entity cursor="fuse: true; fuseTimeout: 500"
-              scale="0.03 0.03 0.03"
-              position="0 0 -1"
-              geometry="primitive: ring"
-              material="color: black; shader: flat">
-        </a-entity>
-
+        <a-entity camera="userHeight: 1.3" look-controls position="3 6 14">
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          raycaster="objects: .link"></a-cursor>
       </a-entity>
 
-      <script>
-        console.log("working");
 
-        var timeline = document.querySelector("#timeline");
-        var supremecourt = document.querySelector("#supremecourtnowalls");
-        var room2 = document.querySelector("#room2");
+
+      <script>
+        var scene = document.querySelector('a-scene');
+
+        var timeline = document.querySelector("#timeline-complete");
+        var seneca = document.querySelector("#seneca");
+        var sup_scene = document.querySelector("#supremecourtscene");
 
         //timeline.emit('click', {scene: supremecourt} , false);
 
-        timeline.addEventListener('click', makeSceneVisible);
+        scene.addEventListener('click', function() {
+          if (sup_scene.getAttribute("visible") == false) {
+            sup_scene.setAttribute("visible", "true");
+            seneca.setAttribute("visible", "false");
+
+          }
+          else {
+            sup_scene.setAttribute("visible", "false");
+            seneca.setAttribute("visible", "true");
+          };
+
+        });
+        
         function makeSceneVisible() {
 
             console.log("hello world");
@@ -116,8 +129,6 @@
             // scene2.setAttribute("visible", "false");
 
         }
-
-
 
       </script>
 
