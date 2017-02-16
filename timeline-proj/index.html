@@ -27,6 +27,7 @@
         <a-asset-item id="judge" src="../assets/voxeljudge.bake.ply"></a-asset-item>
         <a-asset-item id="woman2" src="../assets/voxelwoman2.bake.ply"></a-asset-item>
         <a-asset-item id="seneca-image" src="../assets/senecafalls.bake.ply"></a-asset-item>
+        <a-asset-item id="womens_march_image" src="../assets/street.bake.ply"></a-asset-item>
 
         <a-asset-item id="_1852" src="../assets/1852.bake.ply"></a-asset-item>
         <a-asset-item id="_1920" src="../assets/1920.bake.ply"></a-asset-item>
@@ -56,6 +57,17 @@
         <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0"></a-entity>
       </a-entity>
 
+      <!-- WOMENS MARCH -->
+       <a-entity class="scene" id="womens_march" visible="false">
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
+
+        <a-entity ply-model="src: #womens_march_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+
 
       <!-- SENECA FALLS -->
       <a-entity class="scene" id="seneca" visible="false">
@@ -74,71 +86,67 @@
 
       <!-- TIMELINE -->
       <a-entity id="timeline-complete">
-        <!-- <a-animation attribute="visible" dur="0" to="false" repeat="indefinite"></a-animation> -->
 
         <a-entity id="timeline" ply-model="src: #timeline" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 15 0"></a-entity>
-        <a-entity ply-model="src: #_1852" rotation="-90 -95 0" scale="0.6 0.6 0.6" position="-5 12 0"></a-entity>
-        <a-entity ply-model="src: #_1920" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="-5 12 7"></a-entity>
-        <a-entity ply-model="src: #_1922" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="3 12 5"></a-entity>
-        <a-entity ply-model="src: #_1960" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 12 5"></a-entity>
-        <a-entity ply-model="src: #_1972" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 0"></a-entity>
-        <a-entity ply-model="src: #_1973" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 0"></a-entity>
-        <a-entity ply-model="src: #_1991" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="5 12 0"></a-entity>
-        <a-entity ply-model="src: #_2017" rotation="-90 -85 0" scale="0.6 0.6 0.6" position="3 12 0"></a-entity>
+
+        <a-entity class="button" id="seneca_button" ply-model="src: #_1852" rotation="-90 -95 0" scale="0.6 0.6 0.6" position="-5 12 0"></a-entity>
+        <a-entity id="sup_scene_button" ply-model="src: #_1920" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="-5 12 7"></a-entity>
+        <a-entity class="button" ply-model="src: #_1922" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="3 12 5"></a-entity>
+        <a-entity class="button" ply-model="src: #_1960" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 12 5"></a-entity>
+        <a-entity class="button" ply-model="src: #_1972" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 0"></a-entity>
+        <a-entity class="button" ply-model="src: #_1973" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 0"></a-entity>
+        <a-entity class="button" ply-model="src: #_1991" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="5 12 0"></a-entity>
+        <a-entity class="button" id="womens_march_button" ply-model="src: #_2017" rotation="-90 -85 0" scale="0.6 0.6 0.6" position="3 12 0"></a-entity>
 
       </a-entity>
       
       <!-- EVERYTHING ELSE -->
 
         <a-entity camera="userHeight: 1.3" look-controls position="3 6 14">
-        <a-cursor id="cursor"
-          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-          event-set__1="_event: mouseenter; color: springgreen"
-          event-set__2="_event: mouseleave; color: black"
-          raycaster="objects: .link"></a-cursor>
-      </a-entity>
+          <a-cursor id="cursor"
+          </a-cursor>
+        </a-entity>
 
 
 
       <script>
-        var scene = document.querySelector('a-scene');
-
-        var timeline = document.querySelector("#timeline-complete");
-        var seneca = document.querySelector("#seneca");
+        var seneca_button = document.querySelector("#seneca_button");
+        var sup_scene_button = document.querySelector("#sup_scene_button");
+        var womens_march_button = document.querySelector("#womens_march_button")
         var sup_scene = document.querySelector("#supremecourtscene");
+        var seneca = document.querySelector("#seneca");
 
-        scene.addEventListener('click', function() {
-          if (sup_scene.getAttribute("visible") == false) {
-            //seneca.emit("hideSeneca");
-            //sup_scene.emit("showSupreme"); 
-            //seneca.setAttribute("visible", "false");
-            //sup_scene.setAttribute("visible", "true");
+        seneca_button.addEventListener('click', function() {
+          showScene(seneca.id);
+        });
 
-            showScene(sup_scene.id);
+        sup_scene_button.addEventListener('click', function() {
+          showScene(sup_scene.id);
+        });
 
-
-          }
-          else if (seneca.getAttribute("visible") == false ) {
-            //sup_scene.emit("hideSupreme");
-            //sup_scene.emit("showSeneca");
-            //sup_scene.setAttribute("visible", "false");
-            //seneca.setAttribute("visible", "true");
-
-            showScene(seneca.id);
-
-          };
-
+        womens_march_button.addEventListener('click', function() {
+          showScene(womens_march.id);
         });
         
+
         function showScene(id) {
           [...document.querySelectorAll('.scene')].forEach( function(s) {
             s.setAttribute("visible", "false");
           });
 
-          console.log(id);
           document.querySelector("#" + id).setAttribute("visible", "true");
         }
+
+        //this function is for when i get the click to work on individual dates in the timeline
+        //i have to name all the year buttons "id-button" for it to work
+        // function showSingleScene(id) {
+        //   [...document.querySelectorAll('.button')]forEach(function(s) {
+        //     s.addEventListener('click', function(event) {
+        //       showScene(event.target.id.replace("_button", ""))
+        //     }
+        //   }));
+        // }
+        
 
       </script>
 
