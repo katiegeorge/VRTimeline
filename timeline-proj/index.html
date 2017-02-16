@@ -26,7 +26,7 @@
         <a-asset-item id="timeline" src="../assets/timelineframe.bake.ply"></a-asset-item>
         <a-asset-item id="judge" src="../assets/voxeljudge.bake.ply"></a-asset-item>
         <a-asset-item id="woman2" src="../assets/voxelwoman2.bake.ply"></a-asset-item>
-        <a-asset-item id="seneca" src="../assets/senecafalls.bake.ply"></a-asset-item>
+        <a-asset-item id="seneca-image" src="../assets/senecafalls.bake.ply"></a-asset-item>
 
         <a-asset-item id="_1852" src="../assets/1852.bake.ply"></a-asset-item>
         <a-asset-item id="_1920" src="../assets/1920.bake.ply"></a-asset-item>
@@ -45,8 +45,9 @@
       <a-sky color="#dcedec"></a-sky>
 
       <!-- SUPREME COURT -->
-      <a-entity id="supremecourtscene" visible="true">
-        <a-animation begin="makeSceneVisible"  dur="0" to="false" repeat="indefinite"></a-animation>
+      <a-entity class="scene" id="supremecourtscene" visible="true">
+        <a-animation begin="hideSupreme" attribute="visible" to="false"></a-animation>
+        <a-animation begin="showSupreme" attribute="visible" to="true"></a-animation>
 
 
         <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
@@ -57,22 +58,23 @@
 
 
       <!-- SENECA FALLS -->
-      <a-entity id="seneca" visible="false">
+      <a-entity class="scene" id="seneca" visible="false">
 
-        <a-animation begin="makeSceneVisible"  dur="0" to="false" repeat="indefinite"></a-animation>
+        <a-animation attribute="visible" begin="hideSeneca" to="false"></a-animation>
+        <a-animation begin="showSeneca" attribute="visible" to="true"></a-animation>
 
 
         <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
         <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
 
-        <a-entity ply-model="src: #seneca" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+        <a-entity ply-model="src: #seneca-image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
 
       </a-entity>
 
 
       <!-- TIMELINE -->
       <a-entity id="timeline-complete">
-        <a-animation begin="makeSceneVisible" attribute="visible" dur="0" to="false" repeat="indefinite"></a-animation>
+        <!-- <a-animation attribute="visible" dur="0" to="false" repeat="indefinite"></a-animation> -->
 
         <a-entity id="timeline" ply-model="src: #timeline" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 15 0"></a-entity>
         <a-entity ply-model="src: #_1852" rotation="-90 -95 0" scale="0.6 0.6 0.6" position="-5 12 0"></a-entity>
@@ -106,28 +108,36 @@
         var seneca = document.querySelector("#seneca");
         var sup_scene = document.querySelector("#supremecourtscene");
 
-        //timeline.emit('click', {scene: supremecourt} , false);
-
         scene.addEventListener('click', function() {
           if (sup_scene.getAttribute("visible") == false) {
-            sup_scene.setAttribute("visible", "true");
-            seneca.setAttribute("visible", "false");
+            //seneca.emit("hideSeneca");
+            //sup_scene.emit("showSupreme"); 
+            //seneca.setAttribute("visible", "false");
+            //sup_scene.setAttribute("visible", "true");
+
+            showScene(sup_scene.id);
+
 
           }
-          else {
-            sup_scene.setAttribute("visible", "false");
-            seneca.setAttribute("visible", "true");
+          else if (seneca.getAttribute("visible") == false ) {
+            //sup_scene.emit("hideSupreme");
+            //sup_scene.emit("showSeneca");
+            //sup_scene.setAttribute("visible", "false");
+            //seneca.setAttribute("visible", "true");
+
+            showScene(seneca.id);
+
           };
 
         });
         
-        function makeSceneVisible() {
+        function showScene(id) {
+          [...document.querySelectorAll('.scene')].forEach( function(s) {
+            s.setAttribute("visible", "false");
+          });
 
-            console.log("hello world");
-
-             //scene.setAttribute("visible", "false");
-            // scene2.setAttribute("visible", "false");
-
+          console.log(id);
+          document.querySelector("#" + id).setAttribute("visible", "true");
         }
 
       </script>
