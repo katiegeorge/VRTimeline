@@ -3,7 +3,7 @@
 
     <title>My A-Frame Scene</title>
 
-    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
     <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
 
     <!-- // <script src"../../aframe-daydream-controller-component/examples/build.js"></script> -->
@@ -21,11 +21,17 @@
       
 
       <a-assets>
+        <img id="my-image" src="../assets/realtext.png">
+
         <a-asset-item id="woman" src="../assets/voxelwoman.bake.ply"></a-asset-item>
         <a-asset-item id="supremecourtnowalls" src="../assets/supremecourtnowalls.bake.ply"></a-asset-item>
         <a-asset-item id="timeline" src="../assets/timelineframe.bake.ply"></a-asset-item>
         <a-asset-item id="judge" src="../assets/voxeljudge.bake.ply"></a-asset-item>
         <a-asset-item id="woman2" src="../assets/voxelwoman2.bake.ply"></a-asset-item>
+        <a-asset-item id="man" src="../assets/voxelman.bake.ply"></a-asset-item>
+        <a-asset-item id="army" src="../assets/voxelarmy.bake.ply"></a-asset-item>
+        <a-asset-item id="athlete" src="../assets/voxelathlete.bake.ply"></a-asset-item>
+
         <a-asset-item id="seneca-image" src="../assets/senecafalls.bake.ply"></a-asset-item>
         <a-asset-item id="womens_march_image" src="../assets/street.bake.ply"></a-asset-item>
 
@@ -39,6 +45,16 @@
         <a-asset-item id="_2017" src="../assets/2017.bake.ply"></a-asset-item>
 
       </a-assets>
+
+      <a-entity id="intro" visible="true">
+          <a-curvedimage  src="#my-image" height="10.0" radius="10.0" position="5 10 14"
+                 rotation="0 150 0" scale="0.8 0.8 0.8" theta-length="72"></a-curvedimage>
+      </a-entity>
+      
+
+      <a-entity position="8 1 0"
+                text="anchor: left; width: 1.5; color: black; value: [LEFT ANCHOR] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam">
+      </a-entity>
 
       <!--       <a-entity id="lefthand" auto-detect-controllers="singlehand"></a-entity> -->      
       <a-entity tracked-controls="id: Daydream Controller"></a-entity>
@@ -57,11 +73,19 @@
         <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0"></a-entity>
       </a-entity>
 
+
       <!-- WOMENS MARCH -->
        <a-entity class="scene" id="womens_march" visible="false">
 
-        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
-        <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 2 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="11 2 3"></a-entity>
+        <a-entity ply-model="src: #man" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="3 2 5"></a-entity>
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="0 2 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -30 0" scale="0.35 0.35 0.35" position="-5 2 5"></a-entity>
+        <a-entity ply-model="src: #man" rotation="-90 -80 0" scale="0.35 0.35 0.35" position="20 2 -1"></a-entity>
+        <a-entity ply-model="src: #army" rotation="-90 -40 0" scale="0.35 0.35 0.35" position="-3 2 0"></a-entity>
+        <a-entity ply-model="src: #athlete" rotation="-90 -70 0" scale="0.35 0.35 0.35" position="-5 2 10"></a-entity>
 
         <a-entity ply-model="src: #womens_march_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
 
@@ -76,8 +100,17 @@
         <a-animation begin="showSeneca" attribute="visible" to="true"></a-animation>
 
 
-        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
-        <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="0 6 -5">
+          <a-animation attribute="rotation" from="-90 -60 60" to="-90 -60 80" dur="1500" repeat="indefinite"></a-animation>
+        </a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 -60" scale="0.35 0.35 0.35" position="18 7 16"></a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 -60" scale="0.35 0.35 0.35" position="25 7 16"></a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 -60" scale="0.35 0.35 0.35" position="10 7 16"></a-entity>
+
+
 
         <a-entity ply-model="src: #seneca-image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
 
@@ -108,50 +141,24 @@
         </a-entity>
 
 
-
-      <script>
-        var seneca_button = document.querySelector("#seneca_button");
-        var sup_scene_button = document.querySelector("#sup_scene_button");
-        var womens_march_button = document.querySelector("#womens_march_button")
-        var sup_scene = document.querySelector("#supremecourtscene");
-        var seneca = document.querySelector("#seneca");
-
-        seneca_button.addEventListener('click', function() {
-          showScene(seneca.id);
-        });
-
-        sup_scene_button.addEventListener('click', function() {
-          showScene(sup_scene.id);
-        });
-
-        womens_march_button.addEventListener('click', function() {
-          showScene(womens_march.id);
-        });
-        
-
-        function showScene(id) {
-          [...document.querySelectorAll('.scene')].forEach( function(s) {
-            s.setAttribute("visible", "false");
-          });
-
-          document.querySelector("#" + id).setAttribute("visible", "true");
-        }
-
-        //this function is for when i get the click to work on individual dates in the timeline
-        //i have to name all the year buttons "id-button" for it to work
-        // function showSingleScene(id) {
-        //   [...document.querySelectorAll('.button')]forEach(function(s) {
-        //     s.addEventListener('click', function(event) {
-        //       showScene(event.target.id.replace("_button", ""))
-        //     }
-        //   }));
-        // }
-        
-
-      </script>
-
     </a-scene>
 
+    <script type="text/javascript">
+      var scene = document.querySelector('a-scene');
+
+      scene.addEventListener('click', function() {
+        intro.setAttribute('visible', 'false');
+        console.log('clicked');
+      });
+
+
+    </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="timeline.js"></script>
+
+
   </body>
+
 
 </html>
