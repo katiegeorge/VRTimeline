@@ -21,7 +21,11 @@
       
 
       <a-assets>
-        <img id="my-image" src="../assets/realtext.png">
+        <img id="my-image" src="../assets/updatedtext.png">
+        <audio class="sounds" id="womensmarchaudio" crossorigin="anonymous" src="../assets/womensMarchAudio.mp3"></audio>
+        <audio class="sounds" id="nineteenthamendmentaudio" crossorigin="anonymous" src="../assets/nineteenthamendmentaudio.mp3"></audio>
+        <audio class="sounds" id="senecafallsaudio" crossorigin="anonymous" src="../assets/senecafallsaudio.mp3"></audio>
+
 
         <a-asset-item id="woman" src="../assets/voxelwoman.bake.ply"></a-asset-item>
         <a-asset-item id="supremecourtnowalls" src="../assets/supremecourtnowalls.bake.ply"></a-asset-item>
@@ -62,7 +66,7 @@
       <a-sky color="#dcedec"></a-sky>
 
       <!-- SUPREME COURT -->
-      <a-entity class="scene" id="supremecourtscene" visible="true">
+      <a-entity class="scene" id="supremecourtscene" visible="true" sound="src: #nineteenthamendmentaudio; on: click">
         <a-animation begin="hideSupreme" attribute="visible" to="false"></a-animation>
         <a-animation begin="showSupreme" attribute="visible" to="true"></a-animation>
 
@@ -75,7 +79,7 @@
 
 
       <!-- WOMENS MARCH -->
-       <a-entity class="scene" id="womens_march" visible="false">
+       <a-entity class="scene" id="womens_march" visible="false" sound="src: #womensmarchaudio; on: click">
 
         <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 2 0"></a-entity>
         <a-entity ply-model="src: #woman2" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="11 2 3"></a-entity>
@@ -94,7 +98,7 @@
 
 
       <!-- SENECA FALLS -->
-      <a-entity class="scene" id="seneca" visible="false">
+      <a-entity class="scene" id="seneca" visible="false" sound="src: #senecafallsaudio; on: click">
 
         <a-animation attribute="visible" begin="hideSeneca" to="false"></a-animation>
         <a-animation begin="showSeneca" attribute="visible" to="true"></a-animation>
@@ -136,7 +140,7 @@
       <!-- EVERYTHING ELSE -->
 
         <a-entity camera="userHeight: 1.3" look-controls position="3 6 14">
-          <a-cursor id="cursor"
+          <a-cursor id="cursor" fuse="false"
           </a-cursor>
         </a-entity>
 
@@ -144,11 +148,11 @@
     </a-scene>
 
     <script type="text/javascript">
+      var intro = document.querySelector('#intro')
       var scene = document.querySelector('a-scene');
 
       scene.addEventListener('click', function() {
         intro.setAttribute('visible', 'false');
-        console.log('clicked');
       });
 
 
