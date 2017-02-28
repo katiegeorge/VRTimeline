@@ -22,9 +22,9 @@
 
       <a-assets>
         <img id="my-image" src="../assets/updatedtext.png">
-        <audio class="sounds" id="womensmarchaudio" crossorigin="anonymous" src="../assets/womensMarchAudio.mp3"></audio>
-        <audio class="sounds" id="nineteenthamendmentaudio" crossorigin="anonymous" src="../assets/nineteenthamendmentaudio.mp3"></audio>
-        <audio class="sounds" id="senecafallsaudio" crossorigin="anonymous" src="../assets/senecafallsaudio.mp3"></audio>
+        <a-sound class="sounds" id="womensmarchaudio" crossorigin="anonymous" src="../assets/womensMarchAudio.mp3"></a-sound>
+        <a-sound class="sounds" id="nineteenthamendmentaudio" src="../assets/nineteenthamendmentaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="senecafallsaudio" crossorigin="anonymous" src="../assets/senecafallsaudio.mp3"></a-sound>
 
 
         <a-asset-item id="woman" src="../assets/voxelwoman.bake.ply"></a-asset-item>
@@ -65,8 +65,10 @@
 
       <a-sky color="#dcedec"></a-sky>
 
+
       <!-- SUPREME COURT -->
-      <a-entity class="scene" id="supremecourtscene" visible="true" sound="src: #nineteenthamendmentaudio; on: click">
+      <a-entity class="scene" id="supremecourtscene" visible="true" sound="src: #nineteenthamendmentaudio">
+
         <a-animation begin="hideSupreme" attribute="visible" to="false"></a-animation>
         <a-animation begin="showSupreme" attribute="visible" to="true"></a-animation>
 
@@ -79,7 +81,7 @@
 
 
       <!-- WOMENS MARCH -->
-       <a-entity class="scene" id="womens_march" visible="false" sound="src: #womensmarchaudio; on: click">
+       <a-entity class="scene" id="womens_march" visible="false" sound="src: #womensmarchaudio">
 
         <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 2 0"></a-entity>
         <a-entity ply-model="src: #woman2" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="11 2 3"></a-entity>
@@ -98,7 +100,7 @@
 
 
       <!-- SENECA FALLS -->
-      <a-entity class="scene" id="seneca" visible="false" sound="src: #senecafallsaudio; on: click">
+      <a-entity class="scene" id="seneca" visible="false" sound="src: #senecafallsaudio">
 
         <a-animation attribute="visible" begin="hideSeneca" to="false"></a-animation>
         <a-animation begin="showSeneca" attribute="visible" to="true"></a-animation>
@@ -123,6 +125,7 @@
 
       <!-- TIMELINE -->
       <a-entity id="timeline-complete">
+        <a-animation attribute="position" from="5 -10 0" to="5 8 0" begin="10000" dur="10000"></a-animation>
 
         <a-entity id="timeline" ply-model="src: #timeline" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 15 0"></a-entity>
 

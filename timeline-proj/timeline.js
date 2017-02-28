@@ -6,7 +6,7 @@ var womens_march_button = document.querySelector("#womens_march_button")
 var sup_scene = document.querySelector("#supremecourtscene");
 var seneca = document.querySelector("#seneca");
 
-var womensmarchaudio = document.querySelector("#womensmarchaudio");
+var womensmarchaudiovar = document.querySelector("#womensmarchaudio");
 var nineteenthamendmentaudio = document.querySelector("#nineteenthamendmentaudio");
 var senecafallsaudio = document.querySelector("#senecafallsaudio");
 
@@ -19,16 +19,18 @@ var senecafallsaudio = document.querySelector("#senecafallsaudio");
 
 seneca_button.addEventListener('click', function() {
   showScene(seneca.id);
-  //playSceneSound(senecafallsaudio.id);
-  senecafallsaudio.components.sound.playSound();
+
+  playSceneSound(senecafallsaudio.id);
 });
 
 sup_scene_button.addEventListener('click', function() {
+
   showScene(sup_scene.id);
   playSceneSound(nineteenthamendmentaudio.id);
 });
 
 womens_march_button.addEventListener('click', function() {
+
   showScene(womens_march.id);
   playSceneSound(womensmarchaudio.id);
 });
@@ -46,8 +48,8 @@ function showScene(id) {
 }
 
 function playSceneSound(id) {
-    [...document.querySelectorAll('.sounds')].forEach( function(s) {
-    s.components.sound.pauseSound();
+    [...document.querySelectorAll('.sounds')].forEach( function(e) {
+    e.components.sound.pauseSound();
   });
 
   document.querySelector("#" + id).components.sound.playSound();
