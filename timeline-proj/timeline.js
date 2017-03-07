@@ -6,6 +6,7 @@ var womens_march_button = document.querySelector("#womens_march_button");
 var votingbooth_button = document.querySelector("#votingbooth_button");
 var doctorsoffice_button = document.querySelector("#doctorsoffice_button");
 var track_button = document.querySelector("#track_button");
+var hillthomas_button = document.querySelector("#hillthomas_button");
 
 
 var sup_scene = document.querySelector("#supremecourtscene");
@@ -14,7 +15,6 @@ var seneca = document.querySelector("#seneca");
 var womensmarchaudiovar = document.querySelector("#womensmarchaudio");
 var hillthomasaudio = document.querySelector("#hillthomasaudio");
 var senecafallsaudio = document.querySelector("#senecafallsaudio");
-
 var trackaudio = document.querySelector("#trackaudio");
 var votingboothaudio = document.querySelector("#votingboothaudio");
 var roevwadeaudio = document.querySelector("#roevwadeaudio");
@@ -29,14 +29,15 @@ var doctorsofficeaudio = document.querySelector("#doctorsofficeaudio");
 
 seneca_button.addEventListener('click', function() {
   showScene(seneca.id);
-
   playSceneSound(senecafallsaudio.id);
+
 });
 
 sup_scene_button.addEventListener('click', function() {
 
   showScene(sup_scene.id);
-  playSceneSound(nineteenthamendmentaudio.id);
+  playSceneSound(roevwadeaudio.id);
+
 });
 
 womens_march_button.addEventListener('click', function() {
@@ -63,6 +64,13 @@ votingbooth_button.addEventListener('click', function() {
 
   showScene(votingbooth.id);
   playSceneSound(votingboothaudio.id);
+
+});
+
+hillthomas_button.addEventListener('click', function() {
+
+  showScene(hillthomasscene.id);
+  playSceneSound(hillthomasaudio.id);
 
 });
 
