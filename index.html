@@ -1,0 +1,240 @@
+<html>
+  <head>
+
+    <title>My A-Frame Scene</title>
+
+    <script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/v2.1.1/dist/aframe-extras.loaders.min.js"></script>
+
+    <!-- // <script src"../../aframe-daydream-controller-component/examples/build.js"></script> -->
+
+    <script src="https://rawgit.com/chenzlabs/auto-detect-controllers/master/dist/aframe-auto-detect-controllers-component.min.js"></script>
+    <script src="https://rawgit.com/chenzlabs/gearvr-controls/master/dist/aframe-gearvr-controls-component.min.js"></script>
+
+
+  </head>
+
+
+  <body>
+
+    <a-scene>
+      
+
+      <a-assets>
+        <img id="my-image" src="timeline-proj/assets/updatedtext.png">
+
+        <!-- audio clips -->
+        <a-sound class="sounds" id="womensmarchaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/womensmarchaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="hillthomasaudio" src="../assets/sounds/hillthomasaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="senecafallsaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/senecafallsaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="trackaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/trackaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="doctorsofficeaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/doctorsofficeaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="votingboothaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/votingboothaudio.mp3"></a-sound>
+        <a-sound class="sounds" id="roevwadeaudio" crossorigin="anonymous" src="timeline-proj/assets/sounds/roevwadeaudio.mp3"></a-sound>
+
+        <!-- people -->
+        <a-asset-item id="woman" src="timeline-proj/assets/voxelwoman.bake.ply"></a-asset-item>
+        <a-asset-item id="timeline" src="timeline-proj/assets/timelineframe.bake.ply"></a-asset-item>
+        <a-asset-item id="judge" src="timeline-proj/assets/voxeljudge.bake.ply"></a-asset-item>
+        <a-asset-item id="woman2" src="timeline-proj/assets/voxelwoman2.bake.ply"></a-asset-item>
+        <a-asset-item id="man" src="timeline-proj/assets/voxelman.bake.ply"></a-asset-item>
+        <a-asset-item id="army" src="timeline-proj/assets/voxelarmy.bake.ply"></a-asset-item>
+        <a-asset-item id="athlete" src="timeline-proj/assets/voxelathlete.bake.ply"></a-asset-item>
+        <a-asset-item id="athlete2" src="timeline-proj/assets/voxelathlete2.bake.ply"></a-asset-item>
+        <a-asset-item id="rebeccafelton" src="timeline-proj/assets/voxelrebeccafelton.bake.ply"></a-asset-item>
+        <a-asset-item id="doctor" src="timeline-proj/assets/voxeldoc.bake.ply"></a-asset-item>
+        <a-asset-item id="anita" src="timeline-proj/assets/anitahill.bake.ply"></a-asset-item>
+        <a-asset-item id="thomas" src="timeline-proj/assets/thomas.bake.ply"></a-asset-item>
+
+
+        <!-- scenes --> 
+        <a-asset-item id="seneca-image" src="timeline-proj/assets/senecafalls.bake.ply"></a-asset-item>
+        <a-asset-item id="supremecourtnowalls" src="timeline-proj/assets/supremecourtnowalls.bake.ply"></a-asset-item>
+        <a-asset-item id="doctorsoffice_image" src="timeline-proj/assets/doctorsoffice.bake.ply"></a-asset-item>
+        <a-asset-item id="womens_march_image" src="timeline-proj/assets/street.bake.ply"></a-asset-item>
+        <a-asset-item id="track_image" src="timeline-proj/assets/track.bake.ply"></a-asset-item>
+        <a-asset-item id="votingbooth_image" src="timeline-proj/assets/votingbooth.bake.ply"></a-asset-item>
+
+        <!-- dates for timeline -->
+        <a-asset-item id="_1848" src="timeline-proj/assets/1848.bake.ply"></a-asset-item>
+        <a-asset-item id="_1920" src="timeline-proj/assets/1920.bake.ply"></a-asset-item>
+        <a-asset-item id="_1922" src="timeline-proj/assets/1922.bake.ply"></a-asset-item>
+        <a-asset-item id="_1960" src="timeline-proj/assets/1960.bake.ply"></a-asset-item>
+        <a-asset-item id="_1972" src="timeline-proj/assets/1972.bake.ply"></a-asset-item>
+        <a-asset-item id="_1973" src="timeline-proj/assets/1973.bake.ply"></a-asset-item>
+        <a-asset-item id="_1991" src="timeline-proj/assets/1991.bake.ply"></a-asset-item>
+        <a-asset-item id="_2017" src="timeline-proj/assets/2017.bake.ply"></a-asset-item>
+
+      </a-assets>
+
+      <a-entity id="intro" visible="true">
+          <a-curvedimage  src="#my-image" height="10.0" radius="10.0" position="5 10 14"
+                 rotation="0 150 0" scale="0.8 0.8 0.8" theta-length="72"></a-curvedimage>
+      </a-entity>
+      
+
+      <!--       <a-entity id="lefthand" auto-detect-controllers="singlehand"></a-entity> -->      
+      <a-entity tracked-controls="id: Daydream Controller"></a-entity>
+
+      <a-sky color="#dcedec"></a-sky>
+
+
+      <!-- ROE V WADE -->
+      <a-entity class="scene" id="supremecourtscene" visible="false" sound="src: #roevwadeaudio">
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="11 1 5"></a-entity>
+        
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 -15"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 -10"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 -7"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 -3"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 1"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 5"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 9"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 14"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 19"></a-entity>
+
+        <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0"></a-entity>
+      </a-entity>
+
+      <!-- HILL-THOMAS -->
+      <a-entity class="scene" id="hillthomasscene" visible="false" sound="src: #hillthomasaudio">
+
+        <a-entity ply-model="src: #anita" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 1 0"></a-entity>
+        <a-entity ply-model="src: #thomas" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 5"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-9 3 0"></a-entity>
+        <a-entity ply-model="src: #judge" rotation="-90 80 0" scale="0.35 0.35 0.35" position="-11 3 10"></a-entity>
+
+
+        <a-entity ply-model="src: #supremecourtnowalls" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 0 0"></a-entity>
+      </a-entity>
+
+
+      <!-- WOMENS MARCH -->
+       <a-entity class="scene" id="womens_march" visible="false" sound="src: #womensmarchaudio">
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="8 2 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="11 2 3"></a-entity>
+        <a-entity ply-model="src: #man" rotation="-90 -50 0" scale="0.35 0.35 0.35" position="3 2 5"></a-entity>
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="0 2 0"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 -30 0" scale="0.35 0.35 0.35" position="-5 2 5"></a-entity>
+        <a-entity ply-model="src: #man" rotation="-90 -80 0" scale="0.35 0.35 0.35" position="20 2 -1"></a-entity>
+        <a-entity ply-model="src: #army" rotation="-90 -40 0" scale="0.35 0.35 0.35" position="-3 2 0"></a-entity>
+        <a-entity ply-model="src: #athlete" rotation="-90 -70 0" scale="0.35 0.35 0.35" position="-5 2 10"></a-entity>
+
+        <a-entity ply-model="src: #womens_march_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+      <!-- TRACK -->
+
+      <a-entity class="scene" id="track" visible="false" sound="src: #trackaudio">
+        <a-entity ply-model="src: #athlete" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-6 2 12"></a-entity>
+        <a-entity ply-model="src: #athlete2" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-10 2 10"></a-entity>
+        <a-entity ply-model="src: #athlete" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-8 2 16"></a-entity>
+        <a-entity ply-model="src: #athlete2" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-7 2 20"></a-entity>
+        <a-entity ply-model="src: #athlete" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-7 2 25"></a-entity>
+        <a-entity ply-model="src: #athlete2" rotation="-90 30 0" scale="0.15 0.15 0.15" position="-14 2 15"></a-entity>
+
+        <a-entity ply-model="src: #track_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+      <!-- VOTING BOOTH -->
+
+      <a-entity class="scene" id="votingbooth" visible="false" sound="src: #votingboothaudio">
+        <a-entity ply-model="src: #woman" rotation="-90 210 0" scale="0.5 0.5 0.5" position="5 2 -3"></a-entity>
+        <a-entity ply-model="src: #woman2" rotation="-90 210 0" scale="0.5 0.5 0.5" position="-8 2 3"></a-entity>
+
+        <a-entity ply-model="src: #votingbooth_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+      <!-- DOCTORS OFFICE -->
+
+      <a-entity class="scene" id="doctorsoffice" visible="false" sound="src: #doctorsofficeaudio">
+        <a-entity ply-model="src: #doctor" rotation="-90 50 0" scale="0.35 0.35 0.35" position="-3 2 5"></a-entity>
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="11 5 2"></a-entity>
+        <a-entity ply-model="src: #man" rotation="-90 -90 0" scale="0.35 0.35 0.35" position="15 2 8"></a-entity>
+
+        <a-entity ply-model="src: #doctorsoffice_image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+
+
+      <!-- SENECA FALLS -->
+      <a-entity class="scene" id="seneca" visible="false" sound="src: #senecafallsaudio">
+
+        <a-animation attribute="visible" begin="hideSeneca" to="false"></a-animation>
+        <a-animation begin="showSeneca" attribute="visible" to="true"></a-animation>
+
+
+        <a-entity ply-model="src: #woman" rotation="-90 -60 0" scale="0.35 0.35 0.35" position="0 6 -5">
+          <a-animation attribute="rotation" from="-90 -60 60" to="-90 -60 80" dur="1500" repeat="indefinite"></a-animation>
+        </a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 0 -60" scale="0.35 0.35 0.35" position="32 7 -3"></a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 -60" scale="0.35 0.35 0.35" position="10 7 16"></a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 -90 -60" scale="0.35 0.35 0.35" position="10 7 16"></a-entity>
+
+        <a-entity ply-model="src: #woman2" rotation="-90 180 -60" scale="0.35 0.35 0.35" position="-7 7 20"></a-entity>
+
+
+
+
+        <a-entity ply-model="src: #seneca-image" rotation="-90 -60 0" scale="0.6 0.6 0.6" position="8 1 0"></a-entity>
+
+      </a-entity>
+
+
+      <!-- TIMELINE -->
+      <a-entity id="timeline-complete">
+        <a-animation attribute="position" from="5 -10 0" to="5 0 0" begin="10000" dur="5000"></a-animation>
+
+        <a-entity id="timeline" ply-model="src: #timeline" rotation="-90 0 0" scale="0.6 0.6 0.6" position="5 15 0"></a-entity>
+
+        <a-entity class="button" id="seneca_button" ply-model="src: #_1848" rotation="-90 -95 0" scale="0.6 0.6 0.6" position="-5 12 0"></a-entity>
+        <a-entity id="votingbooth_button" ply-model="src: #_1920" rotation="-90 180 0" scale="0.6 0.6 0.6" position="25 14 -1"></a-entity>
+        
+        <a-entity id="doctorsoffice_button"class="button" ply-model="src: #_1960" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 12 5"></a-entity>
+        <a-entity id="track_button" class="button" ply-model="src: #_1972" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 0"></a-entity>
+        <a-entity class="button" id="sup_scene_button" ply-model="src: #_1973" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="12 14 9"></a-entity>
+        <a-entity class="button" id="hillthomas_button" ply-model="src: #_1991" rotation="-90 -90 0" scale="0.6 0.6 0.6" position="5 12 0"></a-entity>
+        <a-entity class="button" id="womens_march_button" ply-model="src: #_2017" rotation="-90 -85 0" scale="0.6 0.6 0.6" position="3 12 0"></a-entity>
+
+      </a-entity>
+      
+      <!-- EVERYTHING ELSE -->
+
+        <a-entity camera="userHeight: 1.3" look-controls position="3 10 14">
+          <a-cursor id="cursor" fuse="false"
+          </a-cursor>
+        </a-entity>
+
+
+    </a-scene>
+
+    <script type="text/javascript">
+      var intro = document.querySelector('#intro')
+      var scene = document.querySelector('a-scene');
+
+      scene.addEventListener('click', function() {
+        intro.setAttribute('visible', 'false');
+      });
+
+
+    </script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="timeline-proj/timeline.js"></script>
+
+
+  </body>
+
+
+</html>
