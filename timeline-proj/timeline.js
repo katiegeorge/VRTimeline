@@ -95,6 +95,7 @@ function playSceneSound(id) {
 
 }
 
+
 //this function is for when i get the click to work on individual dates in the timeline
 //i have to name all the year buttons "id-button" for it to work
 // function showSingleScene(id) {
